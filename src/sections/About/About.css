@@ -1,27 +1,72 @@
 .abtContainer {
   height: 100vh;
+  /* transform: translateY(-10%); */
+  padding: 3rem;
+  position: relative;
 }
 
-.avt {
-  border-radius: 1000px;
-  height: 20rem;
+.abtheading {
+  font-size: 3rem;
+  font-weight: 500;
+  background-image: linear-gradient(to right, #4a1cb0, #6aa7dd);
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #1677a4;
 }
-.main {
+
+a:visited,
+a:hover,
+a:active,
+a:link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #1677a4;
+}
+
+.avatarImg {
+  border-radius: 1000px;
+  height: 27rem;
+  box-shadow: 8px 15px 20px 10px rgba(117, 103, 128, 0.3);
+  margin-right: 3rem;
+  transition: all 0.5s;
+}
+
+.avatarImg:hover {
+  transform: scale(1.2);
+}
+.abt-content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
-.about {
-  width: 50%;
-  margin-left: 10rem;
-  line-height: 3rem;
-  color: #250452;
+
+.content-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
 }
 
-.about::first-letter {
-  text-transform: capitalize;
-  font-size: 3em;
-  font-weight: 900;
-  letter-spacing: 2rem;
-  color: blueviolet;
+.avatar {
+  flex: 1;
+}
+
+.abt-text {
+  flex: 2;
+}
+
+.fab {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+}
+
+.fabBtn {
+  padding: 1.2rem 1.5rem;
+  color: white !important;
+  border-radius: 1000px;
+  background-color: #1677a4;
+  box-shadow: 7px 5px 12px 6px rgba(60, 59, 63, 0.2);
+  z-index: 9999;
 }

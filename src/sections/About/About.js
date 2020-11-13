@@ -1,53 +1,49 @@
 import React from "react";
-import "./About.css";
-import Navigation from "./../../components/navigation/Navigation";
-import avatar from "../../assets/avatar.jpg";
 import ScrollAnimation from "react-animate-on-scroll";
+import Navigation from "../../components/navigation/Navigation";
+import avatar from "../../assets/avatar.jpg";
+import "./About.css";
 function About() {
   return (
     <div className="abtContainer" id="about">
-      <Navigation />
-      <div className="main">
-        <ScrollAnimation animateIn="animate__animated animate__fadeInTopLeft">
-          <div className="avatar">
-            <img src={avatar} className="avt" />
-          </div>
+      <div className="fab">
+        <ScrollAnimation
+          animateIn="animate__animated animate__fadeInTopLeft"
+          animatePreScroll={false}
+          animateOnce
+        >
+          <a href="#landing" className="fabBtn">
+            <i class="fa fa-arrow-up" aria-hidden="true"></i>
+          </a>
         </ScrollAnimation>
+      </div>
 
-        <div className="about">
-          <ScrollAnimation
-            animateIn="animate__animated animate__fadeInUp  animate__pulse"
-            // animateOut="animate__animated animate__slideOutRight animate__zoomOut"
-          >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus
-            unde aliquid temporibus. Dolores tenetur sequi quod! Libero ab harum
-            laudantium modi debitis, provident ut fugit dolorum quis ducimus
-            tempore atque excepturi quaerat quibusdam ea unde, culpa odit
-            perspiciatis sequi deleniti vitae voluptatibus nisi beatae! Nam
-            sequi beatae distinctio delectus, quisquam, quasi unde, voluptates
-            fugit non a quam facilis id iste iusto veniam aperiam. Quod
-            laudantium labore velit et, dolores repellendus tempore nulla. Quod
-            facilis nostrum illo dolorum optio delectus iure blanditiis
-            dignissimos inventore tenetur sit, odit fugiat repellat
-            reprehenderit rem assumenda pariatur voluptatibus excepturi numquam
-            cumque at ipsum quasi. Perferendis!
-            <br />
-            <br />
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus
-            unde aliquid temporibus. Dolores tenetur sequi quod! Libero ab harum
-            laudantium modi debitis, provident ut fugit dolorum quis ducimus
-            tempore atque excepturi quaerat quibusdam ea unde, culpa odit
-            perspiciatis sequi deleniti vitae voluptatibus nisi beatae!
-            <br />
-            <br />
-            Nam sequi beatae distinctio delectus, quisquam, quasi unde,
-            voluptates fugit non a quam facilis id iste iusto veniam aperiam.
-            Quod laudantium labore velit et, dolores repellendus tempore nulla.
-            Quod facilis nostrum illo dolorum optio delectus iure blanditiis
-            dignissimos inventore tenetur sit, odit fugiat repellat
-            reprehenderit rem assumenda pariatur voluptatibus excepturi numquam
-            cumque at ipsum quasi. Perferendis!
-          </ScrollAnimation>
+      <div className="abtheading">
+        <a href="#about">About me</a>
+      </div>
+      <div className="content-container">
+        <div className="abt-content">
+          <div className="avatar">
+            <ScrollAnimation animateIn="animate__animated animate__fadeInTopLeft">
+              <img src={avatar} className="avatarImg" />
+            </ScrollAnimation>
+          </div>
+          <div className="abt-text">
+            <ScrollAnimation animateIn="animate__animated animate__flipInX">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
+              dolore facilis, optio assumenda repellat facere esse. Debitis aut
+              alias, ducimus ex ipsam modi nesciunt perferendis vel! Accusamus
+              quo at quidem ab dolorem ea, numquam repudiandae voluptatem
+              tenetur culpa optio reiciendis eligendi aut aperiam, maiores nisi
+              error neque recusandae dolores temporibus nam ducimus corrupti
+              aliquam corporis.
+              <br></br>
+              <br></br>
+              sint consectetur aperiam voluptatem provident doloremque eos
+              dolores ex molestiae blanditiis dolorum quam quidem necessitatibus
+              amet quas quod veritatis.
+            </ScrollAnimation>
+          </div>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ body {
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: "Montserrat", "Nunito", "Sans-Serif";
+  font-family: "Poppins", "Montserrat", "Nunito", "Sans-Serif";
   scroll-behavior: smooth;
   overflow-y: scroll;
   /* therefore 1rem=10px  */
@@ -21,4 +21,56 @@ html {
 :root {
   --animate-duration: 3000ms;
   --animate-delay: 0.9s;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 40%;
+  }
+  .cardsList {
+    flex-direction: column;
+  }
+  .content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .abt-content {
+    flex-direction: column;
+  }
+  .cardContainer {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+  }
+  .skillsContainer {
+    clip-path: none;
+    height: 210vh;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .banner {
+    height: 25vh !important;
+  }
+  .text {
+    margin-top: 2rem;
+  }
+  .skillsHeading {
+    font-size: 3rem;
+    font-weight: 500;
+    display: inline-block;
+
+    position: absolute;
+    top: 10rem;
+    right: 3rem;
+  }
+
+  .avatarImg {
+    margin-bottom: 3rem;
+  }
 }
