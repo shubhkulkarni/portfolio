@@ -1,0 +1,18 @@
+import React from "react";
+import './Navigation.css'
+
+function Navigation() {
+  return (
+    <div>
+      <ul className="navlist">
+          <li className="navitem">Intro</li>
+          <li className="navitem">About</li>
+          <li className="navitem">Skills</li>
+          <li className="navitem">Works</li>
+          <li className="navitem">Contact me</li>
+      </ul>
+    </div>
+  );
+}
+
+export default Navigation;

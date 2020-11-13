@@ -1,0 +1,18 @@
+.navlist {
+  display: flex;
+  width: 100%;
+  /* background-color: #250452; */
+  position: fixed;
+}
+
+.navitem {
+  color: #9088d4;
+  font-size: 2rem;
+  margin: 2rem;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.navitem:hover {
+  color: white;
+}
