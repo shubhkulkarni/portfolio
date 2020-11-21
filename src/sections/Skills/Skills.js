@@ -5,8 +5,8 @@ function Skills() {
   return (
     <div className="skillsContainer" id="skills">
       <div className="fab">
-        <a href="#landing" className="fabBtn">
-          Next <i class="fa fa-arrow-up" aria-hidden="true"></i>
+        <a href="#works" className="fabBtn">
+          Works <i class="fa fa-arrow-down" aria-hidden="true"></i>
         </a>
       </div>
       <div className="skillsHeading">

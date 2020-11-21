@@ -8,7 +8,7 @@ function About() {
     <div className="abtContainer" id="about">
       <div className="fab">
         <a href="#skills" className="fabBtn">
-          Next <i class="fa fa-arrow-down" aria-hidden="true"></i>
+          Skills <i class="fa fa-arrow-down" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -36,6 +36,11 @@ function About() {
               sint consectetur aperiam voluptatem provident doloremque eos
               dolores ex molestiae blanditiis dolorum quam quidem necessitatibus
               amet quas quod veritatis.
+              <br /> <br /> <br />
+              <div className="myname">
+                <div className="myname__main">Shubham Kulkarni</div>
+                <div className="myname__sub">React & Node Developer</div>
+              </div>
             </ScrollAnimation>
           </div>
         </div>

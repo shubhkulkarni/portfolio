@@ -34,6 +34,8 @@ a {
   .cardsList {
     flex-direction: column;
   }
+  .cardsList > .animated {
+  }
   .content {
     flex-direction: column;
     align-items: center !important;
@@ -51,7 +53,7 @@ a {
   }
   .skillsContainer {
     clip-path: none;
-    height: 200vh !important;
+    height: 220vh !important;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: translateY(-12%);
   }
