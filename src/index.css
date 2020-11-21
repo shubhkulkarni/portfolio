@@ -34,8 +34,7 @@ a {
   .cardsList {
     flex-direction: column;
   }
-  .cardsList > .animated {
-  }
+
   .content {
     flex-direction: column;
     align-items: center !important;

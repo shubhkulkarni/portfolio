@@ -19,6 +19,7 @@ function Skills() {
           <ScrollAnimation
             animateIn="animate__animated animate__fadeInDown"
             delay={0}
+            offset={40}
           >
             <div className="card card1">
               <div className="cardImage">
@@ -39,6 +40,7 @@ function Skills() {
           <ScrollAnimation
             animateIn="animate__animated animate__fadeInDown"
             delay={300}
+            offset={40}
           >
             <div className="card card2">
               {" "}
@@ -59,6 +61,7 @@ function Skills() {
           <ScrollAnimation
             animateIn="animate__animated animate__fadeInDown"
             delay={600}
+            offset={40}
           >
             <div className="card card6">
               {" "}
@@ -78,6 +81,7 @@ function Skills() {
           <ScrollAnimation
             animateIn="animate__animated animate__fadeInDown"
             delay={900}
+            offset={40}
           >
             <div className="card card3">
               {" "}
@@ -97,7 +101,8 @@ function Skills() {
           </ScrollAnimation>
           <ScrollAnimation
             animateIn="animate__animated animate__fadeInDown"
-            delay={1200}
+            delay={1100}
+            offset={40}
           >
             <div className="card card4">
               {" "}
@@ -116,7 +121,8 @@ function Skills() {
           </ScrollAnimation>
           <ScrollAnimation
             animateIn="animate__animated animate__fadeInDown"
-            delay={1500}
+            delay={1300}
+            offset={40}
           >
             <div className="card card5">
               {" "}
