@@ -13,6 +13,12 @@
   cursor: pointer;
 }
 
-.navitem:hover {
+li.navitem > a:hover {
   color: white;
+}
+
+li.navitem > a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  text-transform: none !important;
 }

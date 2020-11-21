@@ -5,13 +5,18 @@ function Navigation({ active }) {
   return (
     <div>
       <ul className="navlist">
-        <li className="navitem">Intro</li>
         <li className="navitem">
           <a href="#about">About</a>
         </li>
-        <li className="navitem">Skills</li>
-        <li className="navitem">Works</li>
-        <li className="navitem">Contact me</li>
+        <li className="navitem">
+          <a href="#skills">Skills</a>
+        </li>
+        <li className="navitem">
+          <a href="#works">Works</a>
+        </li>
+        <li className="navitem">
+          <a href="#contact">Contact</a>
+        </li>
       </ul>
     </div>
   );

@@ -9,9 +9,9 @@ function Landing() {
       <div className="logobox">
         <img src={logo} alt="logo" className="logo" />
       </div>
-      {/* <div className="navigation">
+      <div className="navigation">
         <Navigation />
-      </div> */}
+      </div>
       <div className="content-container">
         <div className="content">
           <div className="image">
@@ -32,7 +32,7 @@ function Landing() {
             </div>
             <div className="button">
               <a href="#about" className="btn">
-                More about me
+                More about me{"\t"}
               </a>
             </div>
           </div>

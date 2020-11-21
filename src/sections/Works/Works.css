@@ -1,0 +1,33 @@
+.worksContainer {
+  height: 100vh;
+  position: relative;
+}
+
+.styledctr {
+  background-image: linear-gradient(
+      to right,
+      rgba(75, 59, 172, 0.55),
+      transparent
+    ),
+    url(../../assets/landing.png);
+  height: 20vh;
+  background-size: cover;
+  background-position: bottom;
+  /* clip-path: polygon(0 0, 100% 0, 100% 65%, 0 90%); */
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 100%);
+}
+
+/* .wrkheading {
+ 
+  display: inline-block;
+} */
+.wrk {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #1677a4 !important;
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  font-size: 3rem;
+  font-weight: 500;
+}

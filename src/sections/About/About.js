@@ -7,15 +7,9 @@ function About() {
   return (
     <div className="abtContainer" id="about">
       <div className="fab">
-        <ScrollAnimation
-          animateIn="animate__animated animate__fadeInTopLeft"
-          animatePreScroll={false}
-          animateOnce
-        >
-          <a href="#landing" className="fabBtn">
-            <i class="fa fa-arrow-up" aria-hidden="true"></i>
-          </a>
-        </ScrollAnimation>
+        <a href="#skills" className="fabBtn">
+          Next <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </a>
       </div>
 
       <div className="abtheading">
@@ -24,12 +18,12 @@ function About() {
       <div className="content-container">
         <div className="abt-content">
           <div className="avatar">
-            <ScrollAnimation animateIn="animate__animated animate__fadeInTopLeft">
+            <ScrollAnimation animateIn="animate__animated animate__zoomIn">
               <img src={avatar} className="avatarImg" />
             </ScrollAnimation>
           </div>
           <div className="abt-text">
-            <ScrollAnimation animateIn="animate__animated animate__flipInX">
+            <ScrollAnimation animateIn="animate__animated animate__fadeIn animate__zoomIn">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
               dolore facilis, optio assumenda repellat facere esse. Debitis aut
               alias, ducimus ex ipsam modi nesciunt perferendis vel! Accusamus
