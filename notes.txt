@@ -228,18 +228,78 @@ weakMap.set(john, "secret documents");
 
 weakSet
 It is analogous to Set, but we may only add objects to WeakSet (not primitives).
+================================================
+destructuring
+let [name = "Guest", surname = "Anonymous"] = ["Julius"];   
+
+let {width: w, height: h, title} = options;
+
+=========================
+let date = new Date(2013, 0, 32); // 32 Jan 2013 ?!?
+alert(date); // ...is 1st Feb 2013!   //it does auto correction
+
+There’s a special method Date.now() that returns the current timestamp = new Date().getTime()
 
 
-    
+Date.parse(YYYY-MM-DDTHH:mm:ss.sssZ) parses date from string  it will give timestamp in ms
+benchmarking is the process of measuring speed/memory usage/performance etc. of functions
+   
+Strings use double quotes. No single quotes or backticks in JSON. 
+// a number in JSON is just a number
+alert( JSON.stringify(1) ) // 1
+// a string in JSON is still a string, but double-quoted
+alert( JSON.stringify('test') ) // "test"
+alert( JSON.stringify(true) ); // true
+alert( JSON.stringify([1, 2, 3]) ); // [1,2,3]
 
+JSON Ignores below things as it is only data-only
+Function properties (methods).
+Symbolic keys and values.
+Properties that store undefined.
 
+There must not any circular refernces 
+let room = {
+  number: 23
+};
+let meetup = {
+  title: "Conference",
+  participants: ["john", "ann"]
+};
+meetup.place = room;       // meetup references room
+room.occupiedBy = meetup; // room references meetup
+JSON.stringify(meetup); // Error: Converting circular structure to JSON Here, the conversion fails, because of circular reference: room.occupiedBy references meetup, and meetup.place references room:
 
+alert(JSON.stringify(user, null, 2));
+/* two-space indents:
 
+we can set a custom toJSON method in an object
+let room = {
+  number: 23,
+  toJSON() {
+    return this.number;
+  }
+};
 
+If an object has toJSON, then it is called by JSON.stringify.
+===================================================================================
+Most engines allow 100000 iterations recursion
 
-
-
-
+The linked list element is recursively defined as an object with:
+value.
+next property referencing the next linked list element or null if that’s the end.
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
 
 
 
