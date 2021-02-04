@@ -1,0 +1,59 @@
+//JS
+obj.method?.() //optional chaining for methods
+
+Object property keys can be either strings or symbols (no boolean, number etc.)
+symbol = unique identifier
+Symbol() creates value of symbol type
+
+let id = Symbol('desc') id is symbol with description desc
+
+to convert symbols to string use toString..auto type conversion is not there
+
+symbolName.description returns the description
+
+symbols can create hidden properties
+
+user[id] = 'someId'
+
+but if you print user object, symbol key will not be there
+
+//forin loop, object.keys ignore symbols but object.assign copies symbols
+======================================
+// read from the global registry
+let id = Symbol.for("id"); // if the symbol did not exist, it is created
+
+// read it again (maybe from another part of the code)
+let idAgain = Symbol.for("id");
+
+// the same symbol
+alert( id === idAgain ); // true
+========================================
+Symbol.keyFor(sym), that does the reverse: returns a name by a global symbol.
+
+Symbol.for(symbolName) returns Symbol
+Symbol.keyFor(symbol) returns key
+
+System Symbols are used by JS internally ex. Symbol.hasInstance
+==============================================================
+obj1+obj2 or obj*obj  objs are converrted tto premitives and then operation is carried out ,
+in case of normal objects only + returns two bjects, else all return NaN
+
+in Date object, date1 -date2  == object to Num conversion occurs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
