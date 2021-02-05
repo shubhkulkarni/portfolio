@@ -1,0 +1,317 @@
+Object property have three flags (all true by default)
+writable – if true, the value can be changed, otherwise it’s read-only.
+enumerable – if true, then listed in loops, otherwise not listed.
+configurable – if true, the property can be deleted and these attributes can be modified, otherwise not.
+
+let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName);
+{
+value: {...},//object itself
+writable:true,
+enumerable:true,
+configurable:true
+}
+JSON.stringify(descriptor, null, 2 ) //to format object well :)
+
+to change the property
+Object.defineProperty(obj, propertyName, descriptor)
+Object.defineProperty(user, "name", {
+  value: "John"
+}); //all flags become falsy
+
+Object.defineProperty(user, "name", {
+  writable: false
+}); //we can't change user.name
+
+for new properties we need to explicitly list what's true
+Making a property non-configurable is a one-way road. We cannot change it back with defineProperty.
+
+Object.defineProperties(obj, {
+  prop1: descriptor1,
+  prop2: descriptor2
+  // ...
+});
+
+Object.preventExtensions(obj)
+Forbids the addition of new properties to the object.
+Object.seal(obj)
+Forbids adding/removing of properties. Sets configurable: false for all existing properties.
+Object.freeze(obj)
+Forbids adding/removing/changing of properties. Sets configurable: false, writable: false for all existing properties.
+And also there are tests for them:
+
+Object.isExtensible(obj)
+Returns false if adding properties is forbidden, otherwise true.
+Object.isSealed(obj)
+Returns true if adding/removing properties is forbidden, and all existing properties have configurable: false.
+Object.isFrozen(obj)
+Returns true if adding/removing/changing properties is forbidden, and all current properties are configurable: false, writable: false.
+
+Object properties have two types : data & Accessor
+accesors are essentially functions that execute on getting and setting a value, but look like regular properties to an external code.
+In an object literal they are denoted by get and set:
+
+let obj = {
+  get propName() {
+    // getter, the code executed on getting obj.propName
+  },
+  set propName(value) {
+    // setter, the code executed on setting obj.propName = value
+  }
+};
+
+let user = {
+  name: "John",
+  surname: "Smith",
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+};
+alert(user.fullName); // John Smith   As of now, fullName has only a getter. If we attempt to assign user.fullName=, there will be an error:
+
+
+==============================================================================
+When we read a property from object, and it’s missing, JavaScript automatically takes it from the prototype.
+In programming, such thing is called “prototypal inheritance”.
+The property [[Prototype]] is internal and hidden, but it can be accessed as __proto__
+rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
+
+Now if we read a property from rabbit, and it’s missing, JavaScript will automatically take it from animal.The prototype chain can be longer:
+The references can’t go in circles. JavaScript will throw an error if we try to assign __proto__ in a circle.
+The value of __proto__ can be either an object or null. Other types are ignored. there can be only one [[Prototype]]. An object may not inherit from two others.
+The prototype is only used for reading properties.Write/delete operations work directly with the object.
+
+No matter where the method is found: in an object or its prototype. In a method call, 'this' is always the object before the dot.
+
+// Object.keys only returns own keys
+alert(Object.keys(rabbit)); // jumps
+
+// for..in loops over both own and inherited keys
+for(let prop in rabbit) alert(prop); // jumps, then eats
+
+there’s a built-in method obj.hasOwnProperty(key): it returns true if obj has its own (not inherited) property named key.
+
+prototype property in new F() constructor object
+F.prototype property is only used when new F is called, it assigns [[Prototype]] of the new object.  ex. Rabbit.prototype = animal;
+
+when no prototype is set , it takes values, functions etc. from Object.prototype. So then when obj.toString() is called the method is taken from Object.prototype.
+for arrays Array.prototype
+
+String.prototype.show = function() {
+  alert(this);
+};
+"BOOM!".show(); // BOOM!
+=============================
+let animal = {
+  eats: true
+};
+// create a new object with animal as a prototype
+let rabbit = Object.create(animal);
+alert(rabbit.eats); // true
+alert(Object.getPrototypeOf(rabbit) === animal); // true
+Object.setPrototypeOf(rabbit, {}); // change the prototype of rabbit to {}
+===========================================
+let obj = Object.create(null);
+alert(obj); // Error (no toString)
+
+We cannot add methods to constructor function objects, so we need prototype
+User.prototype.show()
+=======================================================================
+
+Classes
+
+class MyClass {
+  // class methods
+  constructor() { ... }
+  method1() { ... }
+  method2() { ... }
+  method3() { ... }
+  ...
+}
+Then use new MyClass() to create a new object with all the listed methods.
+The constructor() method is called automatically by new, so we can initialize the object there.
+
+class User {
+  constructor() {}
+}
+alert(typeof User); // function
+User(); // Error: Class constructor User cannot be invoked without 'new'
+Classes always use strict.
+
+Class Expression 
+let User = class {
+  sayHi() {
+    alert("Hello");
+  }
+};
+
+“Class fields” is a syntax that allows to add any properties.
+class User {
+  name = "John";
+}
+
+we can use extends keyword to implement class inheritence
+it uses prototype mehanism, if method not found in class2 then finds it in class1
+
+Class syntax allows to specify not just a class, but any expression after extends.
+class User extends f("Hello") {}
+
+the method can be completely overrriden in child using same method name
+
+super.method(...) to call a parent method.
+super(...) to call a parent constructor (inside our constructor only).
+
+
+  stop() {
+    super.stop(); // call parent stop
+    this.hide(); // and then hide
+  }
+  
+  Arrow functions have no super
+  If accessed, it’s taken from the outer function
+  if a class extends another class and has no constructor, then the following “empty” constructor is generated:
+  
+  class Rabbit extends Animal {
+  // generated for extending classes without own constructors
+  constructor(...args) {
+    super(...args);
+  }
+}
+
+As we can see, it basically calls the parent constructor passing it all the arguments. That happens if we don’t write a constructor of our own.
+Constructors in inheriting classes must call super(...), and (!) do it before using this
+parent constructor always uses its own field value, not the overridden one.
+
+we can declare static methods in a class, they can be called by Class name iteself and not by its object , coz they are created in class func itself and not in its protottype
+class User {
+  static staticMethod() {
+    alert(this === User);
+  }
+}
+
+User.staticMethod(); // true
+
+class Article {
+  static publisher = "Ilya Kantor";
+}
+
+alert( Article.publisher ); // Ilya Kantor   Static properties and methods are inherited.
+
+
+
+In JavaScript, there are two types of object fields (properties and methods):
+
+Public: accessible from anywhere. They comprise the external interface. Until now we were only using public properties and methods.
+Private: accessible only from inside the class. These are for the internal interface.
+
+Privates should start with #. They are only accessible from inside the class.
+
+For instance, here’s a private #waterLimit property and the water-checking private method #checkWater:
+class CoffeeMachine {
+  #waterLimit = 200;
+  
+  Built-in classes like Array, Map and others are extendable also.
+  
+  obj instanceof Class
+It returns true if obj belongs to the Class or a class inheriting from it.
+
+let arr = [1, 2, 3];
+alert( arr instanceof Array ); // true
+alert( arr instanceof Object ); // true
+------------------------------------------------------------------------------------
+
+a mixin is a class containing methods that can be used by other classes without a need to inherit from it.
+The simplest way to implement a mixin in JavaScript is to make an object with useful methods, so that we can easily merge them into a prototype of any class.
+let sayHiMixin = {
+  sayHi() {
+    alert(`Hello ${this.name}`);
+  },
+  sayBye() {
+    alert(`Bye ${this.name}`);
+  }
+};
+// usage:
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+// copy the methods
+Object.assign(User.prototype, sayHiMixin);
+// now User can say hi
+new User("Dude").sayHi(); // Hello Dude! There’s no inheritance, but a simple method copying.
+
+==========================================================
+If an exception happens in “scheduled” code, like in setTimeout, then try..catch won’t catch it:
+try catch works synchronously
+try {
+  setTimeout(function() {
+    noSuchVariable; // script will die here
+  }, 1000);
+} catch (e) {
+  alert( "won't work" );
+}
+
+There should be nothing in between try and catch blocks
+the carch error object contains atleast name and message of errror
+
+The throw operator generates an error. (for throwing error without waiting for catch)
+let error = new Error(message);
+// or
+let error = new SyntaxError(message);
+let error = new ReferenceError(message);
+
+let error = new Error("Things happen o_O");
+alert(error.name); // Error
+alert(error.message); // Things happen o_O
+
+using throw   , we can throw anything even a number or string
+if (!user.name) {
+    throw new SyntaxError("Incomplete data: no name"); // (*)
+  }
+
+rethrowing
+Catch gets all errors.
+In the catch(err) {...} block we analyze the error object err.
+If we don’t know how to handle it, we do throw err.
+
+try {
+   ... try to execute the code ...
+} catch(e) {
+   ... handle errors ...
+} finally {
+   ... execute always ...    
+}  
+finally runs in both cases , cattch can be omitted if u are using finally
+
+window.onerror = function(message, url, line, col, error) {
+  // ...
+};
+for global error catching it will have message , url, error etc.
+
+
+custome error below
+class ValidationError extends Error {
+  constructor(message) {
+    super(message); // (1)
+    this.name = "ValidationError"; // (2)
+  }
+}
+function test() {
+  throw new ValidationError("Whoops!");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
