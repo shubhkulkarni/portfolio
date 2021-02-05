@@ -300,10 +300,52 @@ let list = {
     }
   }
 };
+===============================================================================
+The rest parameters must be at the end
+The rest parameters gather all remaining arguments, so the following does not make sense and causes an error:
+rest - parameters  & Spread operator
+function showName(firstName, lastName, ...titles) {
+titles is an array
+
+arrow functions dont have arguments object
+
+...arguments  makes array of remaining arguments = rest
+...arr expands and makes array elements free = spread   Math.max(...arr)
+
+let str = "Hello"; 
+alert( [...str] ); // H,e,l,l,o
+
+A closure is a function that remembers its outer variables and can access them. in JavaScript, all functions are naturally closures 
+
+IIFEs were invented to get block scope for var
+var allows redeclarations
+
+In a browser, global functions and variables declared with var (not let/const!) become the property of the global object:
+var gVar = 5;
+alert(window.gVar); // 5 (became a property of the global object)
+
+function sayHi() {
+  alert("Hi");
+}
+
+alert(sayHi.name); // sayHi   sayHi.length //length of parameters
+
+function getFunc() {
+  let value = "test";
+  let func = new Function('alert(value)'); //'new' functions are not closures
+  return func;
+}
+getFunc()(); // error: value is not defined
 
 
+Novice developers sometimes make a mistake by adding brackets () after the function:
+// wrong!
+setTimeout(sayHi(), 1000);
+That doesn’t work, because setTimeout expects a reference to a function. 
+setTimeout(sayHi, 1000); //correct
 
+for cancelling with clearTimeout(id) 
+let id = setTimeout(...
 
-
-
-
+setTimeout(() => alert("World"));
+alert("Hello"); //Hello World not world Hello...cause it invokes it after comple script execution
