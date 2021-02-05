@@ -349,3 +349,83 @@ let id = setTimeout(...
 
 setTimeout(() => alert("World"));
 alert("Hello"); //Hello World not world Hello...cause it invokes it after comple script execution
+
+=================================================================================
+Call Apply Bind
+
+func(1, 2, 3);
+func.call(obj, 1, 2, 3)
+They both call func with arguments 1, 2 and 3. The only difference is that func.call also sets 'this' to obj.
+function getData (id='default') {
+  return {[id] : this.data}
+}
+let user = {
+  data:{name:'shubham',age:25}
+}
+let employee = {
+  data:{name:'snehal',age:24}
+}
+console.log(getData.call(user,123))
+And here we use call to call getData with the given context and phrase:
+
+Instead of func.call(this, ...arguments) we could use func.apply(this, arguments)
+func.call(context, ...args); // pass arguments separately
+func.apply(context, args);   // pass arguments in array
+theFunction.apply(valueForThis, arrayOfArgs)
+theFunction.call(valueForThis, arg1, arg2, ...)
+
+Decorator is a wrapper around a function that alters its behavior. The main job is still carried out by the function.
+
+
+Once an object method is passed somewhere separately from the object – 'this' is lost. (just like in callbacks)
+The method setTimeout in-browser is a little special: it sets this=window for the function call 
+
+bind is just for binding to the context, 
+let boundFunc = func.bind(context);
+
+In other words, calling boundFunc is like func with fixed this.
+let user = {
+  firstName: "John"
+};
+function func() {
+  alert(this.firstName);
+}
+let funcUser = func.bind(user);
+funcUser(); // John
+
+let getUserData = getData.bind(user)
+console.log(getUserData(5))
+
+let bound = func.bind(context, [arg1], [arg2], ...);
+function mult(a, b) {
+  return a * b;
+}
+let double = mult.bind(null, 2);
+alert( double(3) ); // = mult(2, 3) = 6
+
+================================================================
+in arrow functions , we don't leave the current context
+'this' is taken from outside of arrow function
+arrow functions can’t be used as constructors. They can’t be called with new.
+
+Arrow functions:
+Do not have this
+Do not have arguments
+Can’t be called with new
+They also don’t have super
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
