@@ -436,9 +436,58 @@ async function f() {
 // f() becomes a rejected promise
 f().catch(alert); // TypeError: failed to fetch // (*)
 
+====================================================================================
+Generators
 
+normal functions can return one value
+generators are special functions that can return multiple values on demand
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+When such function is called, it doesn’t run its code. Instead it returns a special object, called “generator object”, to manage the execution.
+let generator = generateSequence();
+alert(generator); // [object Generator]
+The main method of a generator is next()
+The result of next() is always an object with two properties:
+value: the yielded value.
+done: true if the function code has finished, otherwise false.
 
+let generator = generateSequence();
+let one = generator.next();
+alert(JSON.stringify(one)); // {value: 1, done: false}
+Let’s call generator.next() again. It resumes the code execution and returns the next yield:
+let three = generator.next();
+alert(JSON.stringify(three)); // {value: 3, done: true}
 
+generators are iterable. i.e.We can loop over their values using for..of:
+It’s because for..of iteration ignores the last value, when done: true
+
+done is true only for return ... not for yields
+let sequence = [0, ...generateSequence()];
+
+function* generatePasswordCodes() {
+  // 0..9
+  yield* generateSequence(48, 57); //for composing generators one in another
+  
+  generator.next(4); //for passing the value
+  generator.throw(err) to throw error
+  
+  
+  Symbol.iterator() method is called by for...of loop
+  
+  ===================================================================
+  Module is a script file which can be exported and imported
+  
+  As modules support special keywords and features, we must tell the browser that a script should be treated as a module, by using the attribute <script type="module">.
+  Modules always use strict
+  Each module has its own top-level scope. In other words, top-level variables and functions from a module are not seen in other scripts.
+  A module code is evaluated only the first time when imported
+  
+  The object import.meta contains the information about the current module. ex.  import.meta.url
+  
+  In a module, top-level 'this' is undefined.
 
 
 
