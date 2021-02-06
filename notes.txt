@@ -23,7 +23,7 @@ polyfills : some js methods are not in old JS , we can add it using pollyfills
 
 in objects latest duplicate key values are taken
 
-let name in user // for testing if key exists
+let 'name' in user // for testing if key exists
 
 to delete an obj key  = delete user.name
 
