@@ -1,4 +1,61 @@
 //JS
+Nullish ?? - first defined
+comparison operators convert to numeric when comparing different types
+undefined is NaN as a number
+undefined is incomparable
+
+case 3 :
+case 5:  combining the cases
+
+functtions have full access to outer variables, we can redeclare outer vars and can modify them
+
+func expressions can't be hoisted
+
+cannot break return statement
+
+|| first truthy or last
+&& first falsy or last
+
+no arguments array in arrow functions
+
+transpilers : for new language features like symbols etc. are converted to simple language
+polyfills : some js methods are not in old JS , we can add it using pollyfills
+
+in objects latest duplicate key values are taken
+
+let name in user // for testing if key exists
+
+to delete an obj key  = delete user.name
+
+two objects are always incomparable but object references can be compared
+
+Object.assign(dest,source1,source2...) copies all props from sources and gets into dest
+
+let newObj = Object.assign({},obj) //copying an object
+
+unreachable code of objects are cleared by garbage collectors
+
+The value of 'this' will be taken at execution time
+
+'this' can be used in any function or object method
+
+if it doesnt get its value then it will be undefined
+
+arrow functions don't have their own this ,  if we include then it will take value from outside
+
+constructors : normal funcs , First capital letter(by convention) , 
+should be executed by new keyword, which creates new object
+
+new : it creates one empty object and assigns it to this, and the value of this is returned from that function
+
+function User(name){        let user = new User('Shubham')
+    this.name = name         // { name:Shubham}
+}
+
+new.target // returns undefined if normal func call , returns func body if called with new operator
+
+in new Func Call, if return {obj}  = obj is returned else 'this' is returned
+===============================================================================
 obj.method?.() //optional chaining for methods
 
 Object property keys can be either strings or symbols (no boolean, number etc.)
