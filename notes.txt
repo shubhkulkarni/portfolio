@@ -387,6 +387,12 @@ function sayHi() {
 
 alert(sayHi.name); // sayHi   sayHi.length //length of parameters
 
+function test2 (...a) {
+
+}
+console.log(test2.length) //0   it will always ignore rest parameters in this case
+
+
 function getFunc() {
   let value = "test";
   let func = new Function('alert(value)'); //'new' functions are not closures
