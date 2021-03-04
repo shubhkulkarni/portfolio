@@ -13,8 +13,8 @@ func expressions can't be hoisted
 
 cannot break return statement
 
-|| first truthy or last
-&& first falsy or last
+|| first truthy or last      a nasel tar b   = a || b
+&& first falsy or last        a asel tarch b = a && b
 
 no arguments array in arrow functions
 
