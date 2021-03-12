@@ -1,0 +1,3 @@
+.test(str)  // operates on regex
+.match(regex) //operates on string - return array of matches else null
+| character is used as OR
