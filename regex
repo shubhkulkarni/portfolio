@@ -1,3 +1,36 @@
 .test(str)  // operates on regex
 .match(regex) //operates on string - return array of matches else null
 | character is used as OR
+
+test(str) always returns boolean
+/regex/i    i flag for case insensitivity
+/regex/g   if we match regex now, it will give rray of all matches due to g(global) flag
+without g flag , match only returns first match
+
+period (dot)
+const regex = /shubh../gi    this will give matches which start with shubha and end with any two letters(two dots)
+same with /.lay/   - play or clay etc.
+
+[] is used to give possible values for that character position
+const regex = /th[aeiou]s/gi    //this or thus
+
+for range 
+[a-z]  , [2-6] or [a-z2-6]
+
+caret for NOT match
+
+/^[0-9]/ig    it will match all other stuff than numbers(even spaces, symbols etc)
+
+let myRegex = /s+/g;   '+' for 'one or more times'
+
+/go*/   * for characters that occur zero or more times   , here it will match for go,gooooo,g etc.
+
+* is for greedy match   (more characters in match)   more or zero occurances
+? is lazy match (less possible charaters in match)   zero or more occurances
+
+const str ='titanic'
+const regex = /t[a-z]*i/
+const regex = /t[a-z]*?i/ ti 
+console.log(str.match(regex)) //titanic
+
+
