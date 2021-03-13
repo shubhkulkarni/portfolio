@@ -21,7 +21,7 @@ caret for NOT match
 
 /^[0-9]/ig    it will match all other stuff than numbers(even spaces, symbols etc)
 
-let myRegex = /s+/g;   '+' for 'one or more times'
+let myRegex = /s+/g;   '+' for 'one or more times' ex. s, sss, ss,sssss etc.
 
 /go*/   * for characters that occur zero or more times   , here it will match for go,gooooo,g etc.
 
@@ -33,4 +33,44 @@ const regex = /t[a-z]*i/
 const regex = /t[a-z]*?i/ ti 
 console.log(str.match(regex)) //titanic
 
+^[]   = negation
+^anyString   = match beginning with anystring(starts with)
+$anyString = match ending with anystring(ends with)
 
+
+
+/\w/  = match a-z A-Z 0-9 _
+/\W/g = match everything other than above ex. spaces symbols etc.
+/\d/g = match digits(numbers)    ex. 5.00 //3
+/\D/g = match all non numbers
+/\s/ = match whitespaces
+/\S/g = match non white spaces
+
+username validator
+
+/^[A-Za-z]{2,}\d*$/g
+
+{2,8} min 2 , max 8 
+{2,} min 2 occurances
+{2} exactly 2
+
+/Tim{4}ber/   //exact match Timmmmber
+
+/favou?rite/   here favorite or favourite  // ? makes u optional
+
+
+look aheads.
+
+/q(?=u)/   return q only if it has u after
+/q(?!u)/  return q only if it doesnt have u after
+
+repeat
+
+/(\w+) \s \1/    \1 ill repeat first capture group i.e \w+
+
+
+\w+ for a word may be with numbers
+
+
+"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1');    $2 2nd capture group 
+therefore match will be Camp Code
