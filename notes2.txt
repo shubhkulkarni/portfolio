@@ -579,6 +579,15 @@ console.log(sumCurry(2)(3))
 
 A function that uses rest parameters, such as f(...args), can’t be curried this way.
 
+=================tageed templates===========
+
+function func (stringsArray,firstParam,secondParam){
+
+
+}
+
+func`wholeString is received in an array, ${firstParam} ${secondParam}`
+
 
 
 
